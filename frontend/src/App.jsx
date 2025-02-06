@@ -19,7 +19,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>Photolabs</h1>
-      <PhotoListItem sampleData={sampleDataForPhotoListItem}/>
+      <PhotoListItem photoData={sampleDataForPhotoListItem}/>
     </div>
   );
 };
