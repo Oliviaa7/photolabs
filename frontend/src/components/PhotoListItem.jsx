@@ -1,24 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = (props) => {
-  const { photoData } = props;
+const PhotoListItem = ({ photoData, isFavourite, toggleFavourite }) => {
 
-  const [selectedPhotos, setSelectedPhotos] = useState({});
-
-  const handleClick = (id) => {
-    setSelectedPhotos((prevSelectedPhotos) => ({
-      ...prevSelectedPhotos,
-      [id]: !prevSelectedPhotos[id],
-    }));
+  const handleFavourite = () => {
+    toggleFavourite(photoData.id);
   };
 
   return (
     <article key={photoData.id} className="photo-list__item">
       <img src={photoData.urls.regular} alt="Post" className="photo-list__image" />
 
-      <PhotoFavButton onClick={() => handleClick(photoData.id)} selected={selectedPhotos[photoData.id]} />
+      <PhotoFavButton onClick={handleFavourite} selected={isFavourite} />
 
       <div className="photo-list__user-details">
         <img src={photoData.user.profile} alt="Profile" className="photo-list__user-profile" />
