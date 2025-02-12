@@ -25,7 +25,14 @@ const App = () => {
   }
 
   const handlePhotoClick = (photo) => {
-    setSelectedPhoto(photo);
+    const photoDetails = {
+      imageUrl: photo.urls.full,
+      username: photo.user.name,
+      userProfile: photo.user.profile,
+      location: photo.location ? `${photo.location.city}, ${photo.location.country}` : "Location not available",
+    }
+
+    setSelectedPhoto(photoDetails);
     setShowModal(true);
   }
 
@@ -35,7 +42,7 @@ const App = () => {
     <div className="App">
       <HomeRoute photos={photos} topics={topics} favourites={favourites} toggleFavourite={toggleFavourite} onPhotoClick={handlePhotoClick}/>
       {showModal && (
-        <PhotoDetailsModal photo={selectedPhoto} closeModal={() => {setShowModal(false)}}/>
+        <PhotoDetailsModal photoDetails={selectedPhoto} closeModal={() => {setShowModal(false)}}/>
       )}
     </div>
   );
