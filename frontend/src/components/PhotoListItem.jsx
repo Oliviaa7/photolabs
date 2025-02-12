@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photoData, isFavourite, toggleFavourite }) => {
+const PhotoListItem = ({ photoData, isFavourite, toggleFavourite, onPhotoClick }) => {
 
   const handleFavourite = () => {
     toggleFavourite(photoData.id);
@@ -10,7 +10,7 @@ const PhotoListItem = ({ photoData, isFavourite, toggleFavourite }) => {
 
   return (
     <article key={photoData.id} className="photo-list__item">
-      <img src={photoData.urls.regular} alt="Post" className="photo-list__image" />
+      <img src={photoData.urls.regular} alt="Post" className="photo-list__image" onClick={() => onPhotoClick(photoData)} />
 
       <PhotoFavButton onClick={handleFavourite} selected={isFavourite} />
 
