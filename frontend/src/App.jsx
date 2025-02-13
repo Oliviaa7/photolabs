@@ -26,10 +26,11 @@ const App = () => {
 
   const handlePhotoClick = (photo) => {
     const photoDetails = {
-      imageUrl: photo.urls.full,
+      imageUrl: photo.urls.regular,
       username: photo.user.name,
       userProfile: photo.user.profile,
       location: photo.location ? `${photo.location.city}, ${photo.location.country}` : "Location not available",
+      similarPhotos: photo.similar_photos,
     }
 
     setSelectedPhoto(photoDetails);
@@ -42,7 +43,7 @@ const App = () => {
     <div className="App">
       <HomeRoute photos={photos} topics={topics} favourites={favourites} toggleFavourite={toggleFavourite} onPhotoClick={handlePhotoClick}/>
       {showModal && (
-        <PhotoDetailsModal photoDetails={selectedPhoto} closeModal={() => {setShowModal(false)}}/>
+        <PhotoDetailsModal photos={photos} photoDetails={selectedPhoto} closeModal={() => {setShowModal(false)}} favourites={favourites}/>
       )}
     </div>
   );
