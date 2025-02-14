@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import photos from 'mocks/photos';
@@ -6,6 +6,7 @@ import topics from "mocks/topics";
 
 
 import './App.scss';
+import { use } from 'react';
 
 // Note: Rendering a single component to build components in isolation
 
@@ -13,6 +14,10 @@ const App = () => {
   const [favourites, setFavourites] = useState([]);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    console.log('State changed: ', favourites);
+  }, [favourites])
 
   const toggleFavourite = (photoId) => {
     setFavourites((prevFavourites) => {
@@ -43,7 +48,7 @@ const App = () => {
     <div className="App">
       <HomeRoute photos={photos} topics={topics} favourites={favourites} toggleFavourite={toggleFavourite} onPhotoClick={handlePhotoClick}/>
       {showModal && (
-        <PhotoDetailsModal photos={photos} photoDetails={selectedPhoto} closeModal={() => {setShowModal(false)}} favourites={favourites}/>
+        <PhotoDetailsModal photos={photos} photoDetails={selectedPhoto} closeModal={() => {setShowModal(false)}} favourites={favourites} toggleFavourite={toggleFavourite}/>
       )}
     </div>
   );

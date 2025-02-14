@@ -4,7 +4,7 @@ import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from '../components/PhotoList';
 
-const PhotoDetailsModal = ({ photoDetails, closeModal, favourites, toggleFavourite, onPhotoClick }) => {
+const PhotoDetailsModal = ({ photoDetails, closeModal, favourites, toggleFavourite }) => {
   const similarPhotosArray = Object.values(photoDetails.similarPhotos);
 
   return (
@@ -20,8 +20,8 @@ const PhotoDetailsModal = ({ photoDetails, closeModal, favourites, toggleFavouri
           <div className='photo-details-modal__photographer-details'>
             <img src={photoDetails.userProfile} alt="photographer" className='photo-details-modal__photographer-profile' />
             <div className='photo-details-modal__photographer-info'>
-              <h5>{photoDetails.username}</h5>
-              <h5 className='photo-details-modal__photographer-location'>{photoDetails.location}</h5>
+              <p>{photoDetails.username}</p>
+              <p className='photo-details-modal__photographer-location'>{photoDetails.location}</p>
             </div>
           </div>
         </div>
@@ -31,7 +31,6 @@ const PhotoDetailsModal = ({ photoDetails, closeModal, favourites, toggleFavouri
             photos={similarPhotosArray}
             favourites={favourites}
             toggleFavourite={toggleFavourite}
-            onPhotoClick={onPhotoClick}
           />
         </div>
       </div>
