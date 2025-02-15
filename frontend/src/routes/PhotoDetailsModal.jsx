@@ -34,7 +34,7 @@ const PhotoDetailsModal = ({ photoDetails, closeModal, favourites, toggleFavouri
               </div>
 
             </div>
-            
+
           </div>
         </div>
 

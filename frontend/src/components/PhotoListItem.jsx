@@ -13,7 +13,7 @@ const PhotoListItem = ({ photoData, isFavourite, toggleFavourite, onPhotoClick }
       <img src={photoData.urls.regular} alt="Post" className="photo-list__image" onClick={() => onPhotoClick(photoData)} />
 
       <PhotoFavButton onClick={handleFavourite} selected={isFavourite} />
-      
+
       <div className="photo-list__user-details">
         <img src={photoData.user.profile} alt="Profile" className="photo-list__user-profile" />
         <div className="photo-list__user-info">
