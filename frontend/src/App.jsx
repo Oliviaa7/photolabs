@@ -31,6 +31,7 @@ const App = () => {
 
   const handlePhotoClick = (photo) => {
     const photoDetails = {
+      photoId: photo.id,
       imageUrl: photo.urls.regular,
       username: photo.user.name,
       userProfile: photo.user.profile,
@@ -42,13 +43,28 @@ const App = () => {
     setShowModal(true);
   }
 
+  const favPhoto = favourites.includes(selectedPhoto?.photoId);
 
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} favourites={favourites} toggleFavourite={toggleFavourite} onPhotoClick={handlePhotoClick}/>
+      <HomeRoute photos={photos}
+      topics={topics}
+      favourites={favourites}
+      toggleFavourite={toggleFavourite}
+      onPhotoClick={handlePhotoClick}
+      />
+
       {showModal && (
-        <PhotoDetailsModal photos={photos} photoDetails={selectedPhoto} closeModal={() => {setShowModal(false)}} favourites={favourites} toggleFavourite={toggleFavourite}/>
+        <PhotoDetailsModal
+        photos={photos}
+        photoDetails={selectedPhoto}
+        closeModal={() => {setShowModal(false)}}
+        favourites={favourites}
+        toggleFavourite={toggleFavourite}
+        isFavourite={favPhoto}
+        onPhotoClick={handlePhotoClick}
+        />
       )}
     </div>
   );
