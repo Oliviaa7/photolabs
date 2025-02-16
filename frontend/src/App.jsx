@@ -18,7 +18,7 @@ const App = () => {
     onClosePhotoDetailModal,
   } = useApplicationData();
 
-  const isFavourite = favourites.includes(selectedPhoto?.photoId);
+  const isFavourite = favourites.some(photo => photo.id === selectedPhoto?.photoId);
 
 
   return (
