@@ -4,19 +4,19 @@ PhotoLabs is a photo management application. The application allows users to exp
 ## Final Product
 
 ### PhotoLabs Home Page
-!["Screenshot of PhotoLabs home page"](https://github.com/Oliviaa7/photolabs/blob/04d5210e0b56f33429039394b8f9533d1af5c9a7/docs/home-page.png)
+!["Screenshot of PhotoLabs home page"](https://github.com/Oliviaa7/photolabs/blob/main/docs/home-page.png?raw=true)
 This is the main page of the PhotoLabs app where users can view a grid of photos.
 
 ### Topics Filter
-!["Screenshot of the main page with a topic filter applied"](https://github.com/Oliviaa7/photolabs/blob/04d5210e0b56f33429039394b8f9533d1af5c9a7/docs/topic-filter.png)
+!["Screenshot of the main page with a topic filter applied"](https://github.com/Oliviaa7/photolabs/blob/main/docs/topic-filter.png?raw=true)
 This shows the main page with a filter applied to show specific photos related to the selected topic.
 
 ### Photo Modal
-!["Screenshot of the photo modal which shows the selected photo in a larger view and with similar photos in a grid below](https://github.com/Oliviaa7/photolabs/blob/04d5210e0b56f33429039394b8f9533d1af5c9a7/docs/photo-modal.png)
+!["Screenshot of the photo modal which shows the selected photo in a larger view and with similar photos in a grid below](https://github.com/Oliviaa7/photolabs/blob/main/docs/photo-modal.png?raw=true)
 When a photo has been selected, the photo modal pops up to show an enlarged view of that photo, along with a grid of similar photos for further exploration.
 
 ### Similar Photos
-!["Screenshot of similar photos to the selected photo"](https://github.com/Oliviaa7/photolabs/blob/04d5210e0b56f33429039394b8f9533d1af5c9a7/docs/similar-photos-grid.png)
+!["Screenshot of similar photos to the selected photo"](https://github.com/Oliviaa7/photolabs/blob/main/docs/photo-modal.png?raw=true)
 This shows a grid of similar photos to the selected photo.
 
 ## Setup
