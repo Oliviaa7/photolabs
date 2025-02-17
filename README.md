@@ -42,7 +42,6 @@ Run the API server: `npm start`
 
 ### Front End
  - React
- - React Router
  - Webpack
  - SASS/SCSS
 
