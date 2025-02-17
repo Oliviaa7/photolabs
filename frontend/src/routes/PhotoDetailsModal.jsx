@@ -6,8 +6,11 @@ import PhotoList from '../components/PhotoList';
 import PhotoFavButton from '../components/PhotoFavButton';
 
 const PhotoDetailsModal = ({ photoDetails, closeModal, favourites, toggleFavourite, isFavourite }) => {
+
+  // Array for similar photos to be displayed within photo modal
   const similarPhotosArray = Object.values(photoDetails.similarPhotos);
 
+  // Handle click for favourite within modal
   const handleFavourite = () => {
     toggleFavourite(photoDetails.photoId);
   };

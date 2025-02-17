@@ -9,6 +9,7 @@ import './App.scss';
 
 const App = () => {
 
+  // Destructured declaration for useApplicationData hook
   const {
     state: { favourites, selectedPhoto, showModal, photoData, topicData },
     onPhotoSelect,
@@ -17,6 +18,7 @@ const App = () => {
     onClosePhotoDetailModal,
   } = useApplicationData();
 
+  // Variable for favouriting within modal
   const isFavourite = favourites.some(photo => photo.id === selectedPhoto?.photoId);
 
 

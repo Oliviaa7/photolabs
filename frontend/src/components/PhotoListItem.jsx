@@ -4,6 +4,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({ photoData, isFavourite, toggleFavourite, onPhotoClick }) => {
 
+  // Handle click for favourite badge on photos in main feed
   const handleFavourite = () => {
     toggleFavourite(photoData.id);
   };

@@ -5,6 +5,8 @@ import FavBadge from './FavBadge';
 import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = ( { topics, favourites, onTopicClick } ) => {
+
+  // Variables for favourites heart within Nav Bar, allows fill and notification star
   const favouriteCount = favourites.length;
   const selected = favouriteCount > 0;
 

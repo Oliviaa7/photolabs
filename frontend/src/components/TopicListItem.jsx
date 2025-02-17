@@ -4,6 +4,7 @@ import "../styles/TopicListItem.scss";
 
 const TopicListItem = ({ listData, onTopicClick }) => {
 
+  // Handle click to allow for topic filtering
   const handleClick = () => {
     onTopicClick(listData.id);
   }
