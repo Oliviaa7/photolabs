@@ -31,7 +31,7 @@ Navigate to the Front End: `cd frontend`
 Install dependencies: `npm install`
 Run the development server: `npm start`
 
-### [Backend] Running Backend Servier
+### [Backend] Running Backend Server
 
 Navigate to the Back End: `cd backend`
 Install dependencies: `npm install`
