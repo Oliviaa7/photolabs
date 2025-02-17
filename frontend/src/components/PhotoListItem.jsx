@@ -17,8 +17,8 @@ const PhotoListItem = ({ photoData, isFavourite, toggleFavourite, onPhotoClick }
       <div className="photo-list__user-details">
         <img src={photoData.user.profile} alt="Profile" className="photo-list__user-profile" />
         <div className="photo-list__user-info">
-          <h3>{photoData.user.username}</h3>
-          <h4 className="photo-list__user-location">{photoData.location.city}, {photoData.location.country}</h4>
+          <p className="photo-list__user-name">{photoData.user.name}</p>
+          <p className="photo-list__user-location">{photoData.location.city}, {photoData.location.country}</p>
         </div>
       </div>
     </article>

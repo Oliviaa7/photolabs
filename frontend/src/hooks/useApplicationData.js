@@ -14,8 +14,8 @@ const initialState = {
   favourites: [],
   selectedPhoto: null,
   showModal: false,
-  photos: [],
-  topics: []
+  photoData: [],
+  topicData: []
 };
 
 const reducer = function(state, action) {
@@ -33,12 +33,12 @@ const reducer = function(state, action) {
     case ACTIONS.SET_PHOTO_DATA:
       return {
         ...state,
-        photos: action.payload,
+        photoData: action.payload,
       };
     case ACTIONS.SET_TOPIC_DATA:
       return {
         ...state,
-        topics: action.payload,
+        topicData: action.payload,
       };
     case ACTIONS.SELECT_PHOTO:
       return {
@@ -70,13 +70,29 @@ const useApplicationData = () => {
     console.log('State changed: ', state);
   }, [state]);
 
+  useEffect(() => {
+    fetch('http://localhost:8001/api/photos')
+      .then(res => res.json())
+      .then((data) => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:8001/api/topics')
+      .then(res => res.json())
+      .then((data) => {
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data });
+      });
+  }, []);
+
   const updateToFavPhotoIds = (photoId) => {
-      if (state.favourites.some(photo => photo.id === photoId)) {
-        dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: photoId }});
-      } else {
-        dispatch( {type: ACTIONS.FAV_PHOTO_ADDED, payload: { id: photoId }});
-      }
-    };
+    if (state.favourites.some(photo => photo.id === photoId)) {
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: photoId } });
+    } else {
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id: photoId } });
+    }
+  };
 
   const onPhotoSelect = (photo) => {
     const photoDetails = {
@@ -88,12 +104,12 @@ const useApplicationData = () => {
       similarPhotos: photo.similar_photos,
     };
 
-    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photoDetails});
+    dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photoDetails });
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS });
   };
 
   const onClosePhotoDetailModal = () => {
-    dispatch({ type: ACTIONS.CLOSE_MODAL })
+    dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
 
   return {

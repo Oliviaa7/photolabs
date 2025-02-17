@@ -1,8 +1,6 @@
 import React from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
-import photos from 'mocks/photos';
-import topics from "mocks/topics";
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from './hooks/useApplicationData';
 
@@ -12,7 +10,7 @@ import './App.scss';
 const App = () => {
 
   const {
-    state: { favourites, selectedPhoto, showModal },
+    state: { favourites, selectedPhoto, showModal, photoData, topicData },
     onPhotoSelect,
     updateToFavPhotoIds,
     onClosePhotoDetailModal,
@@ -24,8 +22,9 @@ const App = () => {
   return (
 
     <div className="App">
-      <HomeRoute photos={photos}
-      topics={topics}
+      <HomeRoute 
+      photos={photoData}
+      topics={topicData}
       favourites={favourites}
       toggleFavourite={updateToFavPhotoIds}
       onPhotoClick={onPhotoSelect}
@@ -33,7 +32,7 @@ const App = () => {
 
       {showModal && (
         <PhotoDetailsModal
-        photos={photos}
+        photos={photoData}
         photoDetails={selectedPhoto}
         closeModal={onClosePhotoDetailModal}
         favourites={favourites}
