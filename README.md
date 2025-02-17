@@ -16,7 +16,7 @@ This shows the main page with a filter applied to show specific photos related t
 When a photo has been selected, the photo modal pops up to show an enlarged view of that photo, along with a grid of similar photos for further exploration.
 
 ### Similar Photos
-!["Screenshot of similar photos to the selected photo"](https://github.com/Oliviaa7/photolabs/blob/main/docs/photo-modal.png?raw=true)
+!["Screenshot of similar photos to the selected photo"](https://github.com/Oliviaa7/photolabs/blob/main/docs/similar-photos-grid.png?raw=true)
 This shows a grid of similar photos to the selected photo.
 
 ## Setup
