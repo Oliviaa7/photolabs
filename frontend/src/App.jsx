@@ -1,7 +1,6 @@
 import React from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
-import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from './hooks/useApplicationData';
 
 
@@ -18,9 +17,6 @@ const App = () => {
     onClosePhotoDetailModal,
   } = useApplicationData();
 
-  // Variable for favouriting within modal
-  const isFavourite = favourites.some(photo => photo.id === selectedPhoto?.photoId);
-
 
   return (
 
@@ -29,22 +25,14 @@ const App = () => {
       photos={photoData}
       topics={topicData}
       favourites={favourites}
+      showModal={showModal}
+      selectedPhoto={selectedPhoto}
+      onClosePhotoDetailModal={onClosePhotoDetailModal}
       toggleFavourite={updateToFavPhotoIds}
       onPhotoClick={onPhotoSelect}
       onTopicClick={onLoadTopic}
       />
 
-      {showModal && (
-        <PhotoDetailsModal
-        photos={photoData}
-        photoDetails={selectedPhoto}
-        closeModal={onClosePhotoDetailModal}
-        favourites={favourites}
-        toggleFavourite={updateToFavPhotoIds}
-        isFavourite={isFavourite}
-        onPhotoClick={onPhotoSelect}
-        />
-      )}
     </div>
   );
 };
