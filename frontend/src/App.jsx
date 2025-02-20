@@ -10,11 +10,12 @@ const App = () => {
 
   // Destructured declaration for useApplicationData hook
   const {
-    state: { favourites, selectedPhoto, showModal, photoData, topicData },
+    state: { favourites, selectedPhoto, modalType, photoData, topicData },
     onPhotoSelect,
     updateToFavPhotoIds,
     onLoadTopic,
     onClosePhotoDetailModal,
+    onFavClick
   } = useApplicationData();
 
 
@@ -25,12 +26,13 @@ const App = () => {
       photos={photoData}
       topics={topicData}
       favourites={favourites}
-      showModal={showModal}
+      modalType={modalType}
       selectedPhoto={selectedPhoto}
-      onClosePhotoDetailModal={onClosePhotoDetailModal}
       toggleFavourite={updateToFavPhotoIds}
+      onClosePhotoDetailModal={onClosePhotoDetailModal}
       onPhotoClick={onPhotoSelect}
       onTopicClick={onLoadTopic}
+      onFavClick={onFavClick}
       />
 
     </div>

@@ -2,12 +2,15 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photoData, isFavourite, toggleFavourite, onPhotoClick }) => {
+const PhotoListItem = ({ photoData, isFavourite, toggleFavourite, onPhotoClick, favourites }) => {
 
   // Handle click for favourite badge on photos in main feed
   const handleFavourite = () => {
-    toggleFavourite(photoData.id);
+    toggleFavourite(photoData);
+    console.log("Favourites?!", favourites)
   };
+
+  
 
   return (
     <article key={photoData.id} className="photo-list__item">

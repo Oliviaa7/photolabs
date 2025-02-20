@@ -7,16 +7,17 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
   CLOSE_MODAL: 'CLOSE_MODAL',
   GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPIC',
+  SET_FAVOURITES: 'SET_FAVOURITES',
+  SET_MODAL_TYPE: 'SET_MODAL_TYPE'
 };
 
 // Initial states for state variables
 const initialState = {
   favourites: [],
   selectedPhoto: null,
-  showModal: false,
+  modalType: false,
   photoData: [],
   topicData: [],
 };
@@ -25,6 +26,7 @@ const initialState = {
 const reducer = function(state, action) {
   switch (action.type) {
     case 'FAV_PHOTO_ADDED':
+      console.log("Adding to favourites:", action.payload); // Check the payload
       return {
         ...state, // keep all previous state values 
         favourites: [...state.favourites, action.payload], // add new favourite photo
@@ -49,20 +51,21 @@ const reducer = function(state, action) {
         ...state,
         selectedPhoto: action.payload, // select a photo
       };
-    case 'DISPLAY_PHOTO_DETAILS':
-      return {
-        ...state,
-        showModal: true, // open the photo modal on the selected photo
-      };
-    case 'CLOSE_MODAL':
-      return {
-        ...state,
-        showModal: false, // hide the photo modal
-      };
     case 'GET_PHOTOS_BY_TOPIC':
       return {
         ...state,
         photoData: action.payload, // update photo data based on topic
+      };
+    case 'SET_FAVOURITES':
+      return {
+        ...state,
+        favourites: action.payload,
+      };
+    case 'SET_MODAL_TYPE':
+      console.log('Setting modal type:', action.payload); 
+      return {
+        ...state,
+        modalType: action.payload,
       };
     default:
       throw new Error(
@@ -98,11 +101,11 @@ const useApplicationData = () => {
 
 
   // Favourite function to add photos to favourites state. 
-  const updateToFavPhotoIds = (photoId) => {
-    if (state.favourites.some(photo => photo.id === photoId)) {
-      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: photoId } });
+  const updateToFavPhotoIds = (photo) => {
+    if (state.favourites.some(favPhoto => favPhoto.id === photo.id)) {
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: photo } });
     } else {
-      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id: photoId } });
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id: photo } });
     }
   };
 
@@ -118,7 +121,7 @@ const useApplicationData = () => {
     };
 
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photoDetails });
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS });
+    dispatch({ type: ACTIONS.SET_MODAL_TYPE, payload: 'photoDetails' });
   };
 
   // LoadTopic function for Top Nav Bar
@@ -131,9 +134,17 @@ const useApplicationData = () => {
       .catch((err) => {console.log('Error fetching photos for topic: ', err)});
   }
 
+  // Select favourites for Favourites button
+  const onFavClick = (favourites) => {
+    console.log('Fav button clicked!');
+
+    dispatch({ type: ACTIONS.SET_FAVOURITES, payload: favourites });
+    dispatch({ type: ACTIONS.SET_MODAL_TYPE, payload: 'favourites' });
+  }
+
   // CloseModal function for exit button on modal
   const onClosePhotoDetailModal = () => {
-    dispatch({ type: ACTIONS.CLOSE_MODAL });
+    dispatch({ type: ACTIONS.SET_MODAL_TYPE, payload: null });
   };
 
   return {
@@ -142,6 +153,7 @@ const useApplicationData = () => {
     onPhotoSelect,
     onLoadTopic,
     onClosePhotoDetailModal,
+    onFavClick
   };
 
 };

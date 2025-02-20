@@ -17,7 +17,8 @@ const PhotoList = ({ photos, favourites, toggleFavourite, onPhotoClick }) => {
               photoData={photo}
               isFavourite={isFavourite}
               toggleFavourite={toggleFavourite}
-              onPhotoClick={onPhotoClick} />
+              onPhotoClick={onPhotoClick}
+              favourites={favourites} />
           </li>
         );
       })}
